@@ -3,48 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>테이블 표 만들기 예제</title>
 </head>
 <body>
-    <ul type="disc">
-        <li>프로그래밍 언어</li>
-        <ul>
-            <li><s>Java</s></li>
-        </ul>
+    <!--
+    table>(tr>td*7*4)
+    -->
+    <table border="1">
+        <caption><h3>머행블로그 식단표</h3></caption>
+        <tr>
+            <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th><th>일</th>
+        </tr>
+        <tr>
+            <td colspan="2">쌀밥</td>
+            <td colspan="3">잡곡밥</td>
+            <td>스파게티</td>
+            <td>짜장면</td>
+        </tr>
+        <tr>
+            <td>불고기</td>
+            <td>떡갈비</td>
+            <td>미니돈까스</td>
+            <td>오징어볶음</td>
+            <td>제육볶음</td>
+            <td rowspan="2">피클</td>
+            <td>단무지</td>
+        </tr>
+        <tr>
+            <td>배추김치</td>
+            <td>
+                깍두기
+            </td><td>
+                미소된장국
+            </td><td>
+                동치기
+            </td><td>
+                고추절임
+            </td><td>
+                짬뽕국물
+            </td>
+        </tr>
+    </table>
 
-        <li>데이터베이스</li>
-        <ul><s>Oracle</s></ul>
+    <br><hr><br>
 
-        <li>화면 구현</li>
-        <ol start="3">
-            <li> HTML5 </li>
-            <ol>
-                <li>글자관련태그</li>
-                <ul>
-                    <li>h1~h6태그</li>
-                    <li>sub, sup태그</li>
-                </ul>
-                <li>목록관련태그</li>
-            </ol>
+    <table border="1"> <caption> <h3>우리펜션 객실안내</h3></caption>
+        <thead>
+            <tr bgcolor="silver">
+                <th>
+                    방이름
+                </th>
+                <th>
+                    고객구분
+                </th>
+                <th>
+                    정원
+                </th>
+                <th>
+                    가격
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>콜로라도</th>
+                <td>여성전용</td>
+                <td rowspan="3">
+                    4인실
+                </td>
+                <td rowspan="4">
+                    100,000원
+                </td>
+            </tr>
 
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>jQuery</li>
-        </ol>
-        <li>서버 개발 기술</li>
-        <ol type="i">
-            <li>JDBC</li>
-            <li>Servlet</li>
-            <li>JSP</li>
-            <li>AJAX</li>
-        </ol>
-        
-        <li>프레임워크</li>
-        <ol type="a">
-            <li>MyBatis</li>
-            <li>Spring</li>
-        </ol>
-    </ul>
+            <tr>
+                <th rowspan="2">아레나도</th>
+                <tr>
+                    <td> 가족용</td>
+                </tr>
+            </tr>
+            <tr>
+                <th>엘레나</th>
+                <td>커플 전용</td>
+                <td> 2인실</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr bgcolor="silver">
+                <th colspan="4">6월 15일까지 전 객실 50% 할인</th>
+            </tr>
+        </tfoot>
+    </table>
 
+    <br><hr><br>
+
+    <table border="1">
+        <tr>
+            <td style="text-align: center;" colspan="6">한국의 차</td>
+        </tr>
+        <tr>
+            <th rowspan="6">뿌리차</th>
+            <td>인삼차</td>
+            <th rowspan="9">과일차</th>
+            <td>수정과</td>
+            <th rowspan="5">잎차</th>
+            <td>뽕잎차</td>
+        </tr>
+        <tr>
+            <td>당귀차</td>
+            <td>유자차</td>
+            <td>감잎차</td>
+        </tr>
+        <tr>
+            <td>생강차</td>
+            <td>구기자차</td>
+            <td>솔잎차</td>
+        </tr>
+        <tr>
+            <td>칡차</td>
+            <td>대추차</td>
+            <td>극화차</td>
+        </tr>
+        <tr>
+            <td>둥글레차</td>
+            <td>오미자차</td>
+            <td>이슬차</td>
+        </tr>
+        <tr>
+            <td>마차</td>
+            <td>매실차</td>
+            <td rowspan="4">기타</td>
+            <td>두충차</td>
+        </tr>
+        <tr>
+            <th rowspan="3">곡물차</th>
+            <td>보리차</td>
+            <td>모과차</td>
+            <td>영지버섯차</td>
+        </tr>
+        <tr>
+            <td>옥수수차</td>
+            <td>산수유차</td>
+            <td>귤강차</td>
+        </tr>
+        <tr>
+            <td>현미차</td>
+            <td>탕자차</td>
+            <td>쌍화차</td>
+        </tr>
+    </table>
 </body>
 </html>

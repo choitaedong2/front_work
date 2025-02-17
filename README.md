@@ -34,3 +34,23 @@ alt + shift + a : /*  */ 주석
 alt + z (위치에 커서 놓고) : 태그안의 내용이 한줄로 긴것을 화면내에서 다 보이도록 여러줄로 내릴 때
 ctrl + alt + 위아래 방향키(키보드로 선택)   : 
 shift + alt + 마우스 드래그(마우스로 선택)  :   세로선택, 다중(멀티)선택 ( 글자를 블록잡고 단축키하면 블록이 세로로잡힘)
+
+
+---------- Emmet DOC
+https://docs.emmet.io/cheat-sheet/
+
+
+---------- 이미지 다운로드 페이지
+https://pixabay.com/ko/
+
+
+----------- 의미없는 텍스트 활용 구문
+https://www.lipsum.com/
+
+
+----------- HTML 구문 DOCS
+https://www.w3schools.com/html/
+
+
+----------- explore image 활용법
+https://www.image-map.net/

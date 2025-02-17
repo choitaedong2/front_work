@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>필수항목</legend>
+            ID :<br><input name="ID" maxlength="10" required><br>
+            PW :<br><input type="password" name="PW" placeholder="특수기호를 포함한 영문, 숫자 입력" maxlength="15" required><br>
+            이름 :<br><input name="name" maxlength="10" required><br>
+        </fieldset>
+        <fieldset>
+            <legend>선택항목</legend>
+            전화번호 :<br> <input type="tel" name="tel" maxlength="10"><br>
+            주소 :<br> <input name="add" maxlength="30"><br>
+            성별 :<br> <input type="radio" name="gender" value="M">남자
+                <input type="radio" name="gender" value="F">여자<br>
+            자기소개 :<br> <textarea name="content" cols="35" rows="10"></textarea><br>
+
+            <input type="submit" value="전송"> &ensp;
+            <input type="reset" value="초기화">
+
+        </fieldset>
+    </form>
+</body>
+</html>
