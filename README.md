@@ -54,3 +54,14 @@ https://www.w3schools.com/html/
 
 ----------- explore image 활용법
 https://www.image-map.net/
+
+
+----------- css 활용 페이지
+https://csszengarden.com/
+
+
+----------- 구글 폰트 브라우저 활용
+https://fonts.google.com/
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
