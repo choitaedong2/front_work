@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 스타일</title>
+
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            padding: 50px;
+            border-width: 3px;
+        }
+        #test1 {
+            border-style: dotted;
+            border-top-width: 10px;
+        }
+        #test2 {
+            box-shadow: 5px 5px 10px 5px grey;
+        }
+        #test3 {
+            border-style: dashed double solid dotted;
+            border-width: 5px;
+        }
+        #test4 {
+            border-style: dashed;
+            border-left-color: red;
+        }
+        #test5 {
+            border-style: groove;
+            border-width: 10px;
+        }
+        #test6 {
+            border-style: ridge;
+            border-width: 10px;
+        }
+        #test7 {
+            border-style: inset;
+            border-width: 10px;
+        }
+        #test8 {
+            border-style: outset;
+            border-width: 10px;
+        }
+        #test9 {
+            border-style: solid;
+            border-radius: 20px; /* 모서리 반지름이 20px를 뜻 함*/
+            border-top-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+        #test10 {
+            border: 5px dotted pink;
+        }
+        #btn {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1>테두리 관련 스타일(border~)</h1>
+    <pre>
+        선택자 {
+            * 테두리 스타일
+            border[-위치]-style: none | dotted | dashed | solid | groove | ridge | insert | outset;
+
+            * 테두리 두께
+            border[-위치]-width: 테두리 두께;
+
+            * 테두리 색상
+            border[-위치]-color: 테두리 색상;
+
+            * 테두리를 한꺼번에
+            border : 두께 스타일 [색상];
+            
+            * 테두리 모서리를 둥글게
+            border-radius: 숫자(반지름);
+
+            * 박스의 그림자
+            box-shadow : 
+        }
+    </pre>
+
+    <!-- div#test${test}*10 -->
+    <div id="test1">test</div>
+    <div id="test2">test</div>
+    <div id="test3">test</div>
+    <div id="test4">test</div>
+    <div id="test5">test</div>
+    <div id="test6">test</div>
+    <div id="test7">test</div>
+    <div id="test8">test</div>
+    <div id="test9">test</div>
+    <div id="test10">test</div>
+    <button id="btn">로그인</button>
+    <hr><br>
+
+    <h1></h1>
+    <pre></pre>
+    <hr><br>
+
+</body>
+</html>
