@@ -1,0 +1,75 @@
+@media screen and (max-width:600px) {
+            
+}
+@media screen and (max-width:999px) {
+    
+}
+
+@media screen and (min-width:1000px) and (max-width:1920px) {
+/* body */
+body {
+    width: 1000px;
+}
+/* header */
+header {
+    height: 350px;
+}
+
+#logo {
+    float: left;
+    height: 25px;
+    margin: 5px 0;
+}
+/* header>form == #login */
+#login {
+    float: right;
+    margin-top: 5px;
+}
+#titleImg {
+    clear: both;
+    height: 310px;
+    width: 100%;
+}
+/* body */
+.navi {
+    width: 1000px;
+    height: 50px;
+    background-color: blueviolet;
+}
+.navi a {
+    color:white;
+    display: inline-block;
+    width: 245px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* 본문 */
+section {
+    float: left;
+    width: 650px;
+    height: 360px;
+}
+section>h3 {
+    margin-top: 5px;
+}
+
+section>article {
+    margin: 10px 0 10px;
+}
+
+aside>img {
+    float: right;
+    width: 350px;
+    height: 120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/* footer */
+footer {
+    clear: both;
+    background-color: darkgray;
+    color: bisque;
+}
+}
