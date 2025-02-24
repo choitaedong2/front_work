@@ -1,8 +1,72 @@
 @media screen and (max-width:600px) {
-            
+/* body */
+body {
+    width: 600px;
+}
+/* header */
+header {
+    height: 300px;
+}
+#logo {
+    float: left;
+    height: 10%;
+    margin: 1% 0 1% 3%;
+    width: 30%;
+}
+
+#login {
+    float: inline-end;
+    height: 10%;
+    margin-top: 1%;
+}
+#titleImg {
+    clear: both;
+    height: 80%;
+    width: 100%;
+}
+
+/* body */
+body {
+    height: 600px;
+}
+.navi {
+    width: 100%;
+    height: 5%;
+    background-color: blueviolet;
+}
+.navi a {
+    color:white;
+    display: inline-block;
+    width: 23%;
+    height: 6%;
+    text-align: center;
+    line-height: 6%;
+}
+
 }
 @media screen and (max-width:999px) {
+    body {
+        width: 999px;
+    }
+    /* header */
+    header {
+        height: 500px;
+    }
+    #logo {
+        float: left;
+        height: 10%;
+        margin: 5px 0 5px 10px;
+        width: 30%;
+    }
     
+    #login {
+        float: inline-end;
+        height: 10%;
+        margin-top: 5px;
+    }
+
+
+
 }
 
 @media screen and (min-width:1000px) and (max-width:1920px) {
