@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+    <style>
+        .area {
+            border: 1px solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+
+    <h3>* 객체 선언 및 사용</h3>
+    <p>
+        - 객체는 중괄호{}를 사용하여 생성<br>
+        - 중괄호 안에 객체 필요한 속성들 정의<br>
+        - '속성명:속성값'의 형태로 정의 (key:value)<br>
+        - 속성값으로는 모든 자료형의 값을 담을 수 있음
+    </p>
+
+    <pre>
+        변수 = {
+            속성명: 속성값,
+            속성명: 속성값,
+            속성명: 속성값,
+            ...
+        }
+    </pre>
+
+    <button onclick="test1();">실행 확인</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test1() {
+            const product = {
+                pName : 'Mango',
+                price : 10000,
+                'kind' : 'fruit',
+                fruitKind : ['Lime', 'Peach', 'Berry']
+            };
+            console.log(product);
+            console.log(typeof(product));
+
+            const area1 = document.getElementById('area1');
+            area1.innerHTML += `product : ${product}<br>`;
+
+            // 객체의 속성에 접근하는 방법
+            // 방법1. 대괄호를 이용하는 방법 : 객체명['속성명']     => 속성명은 반드시 문자열로 표현
+            area1.innerHTML += `<b>객체명['속성명']으로 접근하기</b><br>`;
+            area1.innerHTML += `pName : ${product.pName}<br>`;
+            area1.innerHTML += `price : ${product.price}<br>`;
+            area1.innerHTML += `kind : ${product.kind}<br>`;
+            area1.innerHTML += `fruitKind : ${product.fruitKind}<br>`;
+            area1.innerHTML += `fruitKind : ${product['fruitKind'][1]}<br>`;
+            area1.innerHTML += `fruitKind : ${product.fruitKind[1]}<br>`;
+        }
+    </script>
+
+    <br><hr><br>
+
+    <h3>* 속성에 접근시 특이케이스(속성명을 호출할 때 반드시 문자열로만 하는 경우)</h3>
+    <button onclick="test2();">실행확인</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function test2() {
+            // 속성명에 빈칸이나 특수기호가 들어가면 반드시 문자열('')로 해야함
+            const user = {
+                "user name" : '홍길동',
+                'age!!' : 20
+            };
+            const area2=document.getElementById('area2');
+            
+            // 점(.)을 이용하여 속성에 접근 못함
+            // area2.innerHTML += `user name : ${user.user name}<br>`; // error
+            // area2.innerHTML += `user name : ${user.age!!}<br>`; // error
+
+            // 반드시 대괄호를 이용
+            area2.innerHTML += `user name : ${user['user name']}<br>`;
+            area2.innerHTML += `user name : ${user['age!!']}<br>`;
+        }
+    </script>
+
+    <br><hr><br>
+
+    <h3>* 객체에서의 반복문</h3>
+    <p>
+        객체가 가지고 있는 모든 속성에 순차적으로 잡근하고자 한다면 반복문 사용가능<br>
+        &emsp;단, 일반 for문으로는 불가. for in으로 사용 가능
+    </p>
+    <button onclick="test3();">실행확인</button>
+    <div id="area3" class="area"></div>
+
+    <script>
+        function test3() {
+            const game = {
+                title : '오버워치',
+                price : 150000,
+                laguage : '한국어',
+                company : '더조은'
+            };
+
+            const area3 = document.getElementById('area3');
+
+            for(key in game) {
+                console.log(key);
+                // 속성명이 key를 찾음. game에는 key라는 속성명은 없음
+                // console.log(game.key); == console.log(game['key']);
+                console.log(game['key']);
+
+                area3.innerHTML += `${key} : ${game[key]}<br>`;
+            }
+        }
+    </script>
+
+    <h4>실습 문제</h4>
+    <pre>
+        - 객체 생성
+        student 객체 생성, 속성 3개 이상 (그 중 1개는 속성명에 빈칸, 1개는 특수기호)
+        속성명, 속성값 자유
+
+        다음을 화살표 함수로 바꾸시오
+        1. let tjoeun1 = function(name) {
+            return name;
+        }
+        A. 
+
+        2. let tjoeun2 = function(name, age) {
+            만약 age가 50이하이면 age+2000을 하여 year변수에 저장
+            그렇지 않으면 age+1900을 하여 year변수에 저장
+            return 홍길동님의 생년은 ????년 입니다.;
+        }
+
+        3. map() 함수를 이용하여 배열 [2,4,6,8]로 => 새로운 배열[10,20,30,40]의 배열 생성하여 출력
+    </pre>
+
+    <button onclick="ex1();">실습문제 확인</button>
+    <button onclick="ex2();">화살표 함수 확인</button><br>
+    이름 : <input id="userName" type="text">
+    나이 : <input id="userAge" type="number">
+    <button onclick="ex3();">화살표 함수 확인</button><br>
+    <br>
+    <button onclick="ex4();">map함수 확인</button>
+    <br>
+    <div id="ex" class="area"></div>
+
+
+    <script>
+        const ex = document.getElementById('ex');
+        function ex1() {
+            const student = {
+                age : 19,
+                ' ' : '빈칸',
+                '!' : '특수기호'
+            }
+            ex.innerHTML = `${student.age}<br>`;
+            ex.innerHTML += `${student[' ']}<br>`;
+            ex.innerHTML += `${student['!']}<br>`;
+        }
+
+        function ex2() {
+            ex.innerHTML = `${tjoeun1('화살표 함수로 변경')}`;
+        }
+        let tjoeun1 = name => name;
+        function ex3() {
+            ex.innerHTML = tjeoun2(document.getElementById('userName').value, document.getElementById('userAge').value);
+        }
+        let tjeoun2 = function(name, age) {
+            if(age<50)
+                age = Number(age) + 2000;
+            else
+                age = Number(age) + 1900;
+            return `${name}님의 생년은 ${age}년 입니다.`;
+        }
+        function ex4() {
+            let exarr = [2,4,6,8];
+            let exarr2 = exarr.map(function(val, index, arr) {
+                val = val/2*10;
+                return val;
+            });
+            ex.innerHTML = exarr2;
+        };
+        
+    </script>
+    
+    <br><br><br><br><br><hr>
+</body>
+</html>
