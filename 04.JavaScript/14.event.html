@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <style>
+        .area {
+            border: 1px solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트(event)</h1>
+    <h2>1. 이벤트 모델 종류</h2>
+    <h3>* 기본이벤트 모델</h3>
+    <p>
+        특정 요소를 가지고 와서 해당 요소의 이벤트 속성에 접근한 후<br>
+        이벤트 핸들러를 연결하는 방식<br>
+        이벤트 제거할 수도 있음
+    </p>
+    <button id="btn1">버튼1</button>
+    <button id="btn2">버튼2</button>
+    <div id="div1" class="area"></div>
+
+    <script>
+        const div1 = document.getElementById('div1');
+        const btn1 = document.getElementById('btn1');
+        btn1.onclick = function() {
+            div1.innerHTML = '버튼1이 클릭되었습니다<br>';
+        }
+
+        document.getElementById('btn2').onclick = function() {
+            div1.innerHTML = '버튼2가 클릭되면서 버튼1의 이벤트 제거됨<br>';
+            btn1.onclick = null; // 이벤트 제거
+        }
+    </script>
+
+    <br><hr>
+
+    <h3>* 인라인 이벤트 모델</h3>
+    <p>
+        요소 내부에 직접적으로 이벤트 속성을 제시하여 실행할 내용을 정의하는 방식<br>
+        주로 script태그 내에 정의되어 있는 함수를 호출하는 방식을 선호
+    </p>
+
+    <button onclick="document.getElementById('div2').innerHTML += '첫번째 버튼 클릭<br>';">첫번째 버튼</button>
+    <button onclick="test1();">정의된 함수 실행</button>
+    <div id="div2" class="area"></div>
+
+    <script>
+        function test1() {
+            document.getElementById('div2').innerHTML += 'script에서 정의된 함수 실행<br>';
+        }
+    </script>
+
+    <br><hr>
+
+    <h3>* addEventListener에 등록</h3>
+    <p>
+        W3C에서 공식적으로 지정한 이벤트 모델<br>
+        브라우저 버전에 아주 예전 버전은 안될 수도 있음
+    </p>
+
+    <button id="btn3">eventListener</button>
+    <script>
+        const btn3 = document.getElementById('btn3');
+
+        // 이벤트를 걸고자하는 요소객체.addEventListener('이벤트명', 이벤트 핸들러);
+        btn3.addEventListener('click', function() {
+            alert('이벤트 모델 생성')
+        });
+
+        btn3.addEventListener('click', () => alert('이벤트 모델 실행'));
+
+        // 마우스가 버튼요소에 들어올때
+        btn3.addEventListener('mouseenter', () => btn3.style.backgroundColor='yellow');
+
+        // 마우스가 버튼요소에 나갈때
+        btn3.addEventListener('mouseout', () => btn3.style.backgroundColor='whitegrey');
+    </script>
+
+    <br><hr>
+
+    <h2>2. 현재 이벤트가 발생한 해당 요소객체에 접근하는 방법</h2>
+    <button id="btn4">이벤트 속성에 핸들러 바인딩</button>&emsp;
+    <button id="btn5">addEventListener 방식</button>&emsp;
+    <button onclick="test2();">인라인 이벤트 방식1</button>&emsp;
+    <button onclick="test3(this);">인라인 이벤트 방식2</button>&emsp;
+
+    <script>
+        // 발생한 이벤트가 변수로 자동으로 들어옴
+        // * 화살표 함수 사용시 'this'는 이벤트가 아닌 창에대해서 설명
+        document.getElementById('btn4').onclick = function(e) {
+            // console.log(e);
+            console.log(window.event); // e를 정의하지 않았다면 직접호출 가능
+
+            // 현재 이벤트가 발생한 요소객체에 접근하고자 한다면
+            console.log(event.target);
+            console.log(window.event.target);
+            console.log(this);
+
+            e.target.innerHTML = '버튼이 클릭됨';
+            window.event.target.style.backgroundColor = 'blue';
+            this.style.color = 'white';
+        }
+        /* ------------------------------------------------ 카피 필요 ----------------------------- */
+        document.getElementById('btn5').addEventListener('click', function(e) {
+            console.log(e);
+            console.log(event.target);
+            console.log(this);
+
+            e.target.innerHTML = 'Listener 버튼이 클릭됨';  
+            e.target.style.backgroundColor = 'pink';
+            window.event.target.style.border = 'none';
+            this.style.borderRadius = '5px';
+            this.style.padding = '5px 20px';
+        });
+
+        // 인라인 이벤트 방식
+        /*
+            초기화가 안되기 때문에 e사용 불가능(window.event만 사용가능)
+            함수를 호출할 때 인자로 this를 넘겨주어 사용할 수 없음
+        */
+        function test2(e) {
+            console.log(e); // 사용불가
+            console.log(this); // window 객체를 가리킴
+            console.log(window.event.target) // ==> 이것만 사용 가능
+
+            // 변경하고자 할시 event.target 사용 필요
+            event.target.innerHTML = '버튼 변경'
+        }
+
+        function test3(btn) {
+            console.log(btn);
+            btn.style.backgroundColor='orange';
+        }
+    </script>
+
+    <br><hr>
+    <h3>3. 태그에 기본적으로 이벤트가 있는 경우 이를 제거하려면</h3>
+    <p>
+        기본적으로 이벤트를 가지고 있는 태그<br>
+        - a태그 : href의 속성으로 url을 요청하는 기본 이벤트 보유<br>
+        - submit 버튼 : 서버로 전송하는 기본 이벤트 보유<br><br>
+
+        태그내에 기본적으로 설정되어 있는 이벤트가 실행되지 않게 할 때<br>
+        => 이벤트 핸들러의 return값을 false로 하면 이벤트가 실행 되지 않음
+    </p>
+    <!-- 기본 이벤트보다 다른 이벤트가 우선순위가 더 높다 -->
+    <a href="https://naver.com" onclick="alert('이벤트 작성');">네이버로 이동</a>
+
+    <a href="https://naver.com" onclick="alert('이벤트 작성'); return false">네이버로 이동</a>
+    <br>
+
+    <a href="https://google.com" onclick="return test4();">구글로 이동</a>
+    <script>
+        function test4() {
+            alert('알림창');
+            return false;
+        }
+    </script>
+
+    <br><br>
+    <form action="test.do" method="post">
+        <!-- 아이디 : <input name="userId" id="userId"><br>
+        비밀번호 : <input type="password" name="userPw" id="userPw"><br>
+        비밀번호 확인 : <input type="password" id="checkPw"><br> -->
+        <hr>
+        <label for="userInfo">사용자 정보를 입력해주십시오</label><br>
+        <!-- 2~4제외한 글자수 막아줌 -->
+        이름* : <input name="userName" id="userName" placeholder="2~4자 입력"><br>
+        <!-- 선택하지 않으면 막아줌 -->
+        성별* :
+            <input name="userGender" type="checkbox" id="userGender" value="M">남자&ensp;
+            <input name="userGender" type="checkbox" id="userGender" value="F">여자<br>
+        취미 : <input name="userHobby" id="userHobby">
+        <h6 color="pink">* 표시 항목은 필수 체크입니다.</h6>
+
+        <input type="submit" onclick="return validata();">
+    </form>
+
+    <script>
+        function validata() {
+            // const userPw = document.getElementById('userPw').value;
+            // const checkPw = document.getElementById('checkPw').value;
+            // const userGender = document.querySelector('input[name=userGender]:checked').value;
+            const userGender = document.querySelector('userGender').value;
+            const userName = document.getElementById('userName').value;
+/*
+            if(userPw != checkPw) {
+                alert("입력하신 비밀번호가 일치하지 않습니다.");
+                document.getElementById('checkPw').value = null;
+                return false;
+            } else if(userName.length < 2 || userName.length > 4) {
+                alert("이름이 허용 글자수를 벗어났습니다.");
+                document.getElementById('userName').value = null;
+                form.userName.focus();
+                return false;
+            } else if(userGender = null) {
+                alert("성별을 선택해 주세요");
+                form.userGender.focus();
+                return false;
+            }
+*/
+            if(userName.length < 2 || userName.length > 4) {
+                alert("이름이 허용 글자수를 벗어났습니다.");
+                document.getElementById('userName').value = null;
+                //form.userName.focus();
+                return false;
+            }
+            if(userGender = null) {
+                alert("성별을 선택해 주세요");
+                form.userGender.focus();
+                return false;
+            }
+        }
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
