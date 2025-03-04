@@ -65,3 +65,12 @@ https://fonts.google.com/
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+# jQuery
+[설치 및 활용] - Install 진행
+- 오프라인: 공식 사이트에서 다운로드, 다른 이름 저장 사용
+- 온라인: url 경로 지정을 통한 활용
+(cf, 05.jQuery/01.jQuery개요.html) 
+
+----------- 설치(versoin 3.7.1)
+https://jquery.com/
